@@ -1,0 +1,54 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Department Page</title>
+</head>
+<body>
+    <div>
+        <div >
+            <ul >
+                <li>Hello  @Session["FullName"]</li>
+                <li>@Html.ActionLink("Home", "Home", "Login")</li>
+                <li >Number of Action: @Session["ActionCounter"] </li>
+                <li >@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+            </ul>
+        </div>
+        <div>
+            <div >
+                <h2>Depatment Menu</h2>
+                <table >
+                    <thead>
+                        <tr><th>ID</th><th>Name</th><th>Manager</th><th ></th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var dep in ViewBag.departments)
+                        {
+                            <tr>
+                                <td>@dep.ID</td>
+                                <td>@dep.DepName</td>
+                                <td>@dep.EmpName</td>
+                                <td>@Html.ActionLink("Edit Department", "GetDepartment", new { id = (int)dep.ID })</td>
+
+                                <td>
+                                    @if (dep.EmpId.Equals("null"))
+                                    {
+                                        @Html.ActionLink("Delete", "DeleteDep", new { id = (int)dep.ID })
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.ActionLink("Add Department", "GetDepartmentDataFromUser")
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
