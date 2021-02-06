@@ -1,0 +1,28 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HomePage</title>
+</head>
+<body>
+    <div>
+        <ul class="nav-list">
+            <li>Hello  @Session["FullName"]</li>
+            <li class="LogOut">Number of Action: @Session["ActionCounter"] </li>
+            <li class="LogOut"><a href="/Login/LogOut"> LogOut </a></li>
+        </ul>
+    </div>
+    <ul>
+        <li>@Html.ActionLink("Employees Menu", "EmpMenu")</li>
+        <li>@Html.ActionLink("Departments Menu", "DepartmentsMenu")</li>
+        <li>@Html.ActionLink("Shifts Menu", "ShiftsMenu")</li>
+    </ul>
+    
+</body>
+</html>
