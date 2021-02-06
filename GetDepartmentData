@@ -1,0 +1,53 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetDepartmentData</title>
+</head>
+<body>
+    <div>
+        <div >
+            <ul >
+                <li>Hello  @Session["FullName"]</li>
+                <li>@Html.ActionLink("Home", "Home", "Login")</li>
+                <li >Number of Action: @Session["ActionCounter"] </li>
+                <li >@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+            </ul>
+        </div>
+
+
+        <div >
+            <div >
+                <div >
+                    <h2>Add Depatment</h2>
+                    @using (Html.BeginForm("AddDep", "Department"))
+                    {
+                        <div >
+                            <label >Depatment Name</label>
+                            @Html.TextBoxFor(x => x.DepName)
+
+                        </div>
+                        <div >
+                            <label >Depatment Manager </label>
+                            @Html.DropDownListFor(x => x.Manager, new SelectList(ViewBag.emp, "ID", "FullName"))
+                        </div>
+                        <div >
+                            <label >Manager ID</label>
+                            @Html.TextBoxFor(x => x.Manager)
+                        </div>
+
+                        <input type="submit" value="Add Department">
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
