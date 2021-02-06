@@ -1,0 +1,66 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employees</title>
+</head>
+<body>
+    <div>
+        <div>
+            <ul >
+                <li>Hello  @Session["FullName"]</li>
+                <li>@Html.ActionLink("Home", "Home", "Login")</li>
+                <li >Number of Action: @Session["ActionCounter"] </li>
+                <li >@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+            </ul>
+        </div>
+
+        <div >
+            <div >
+                <h2>Employee Menu</h2>
+
+                <div>
+                    <input id="Search" type="text" placeholder="Search">
+                    <input type="button" value="search" />
+                </div>
+
+                <table >
+                    <thead>
+                        <tr><th>ID</th><th>Full Name</th><th >Department</th><th >Start Year</th><th >Shifts</th></tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in ViewBag.EmpData)
+                        {
+                            <tr>
+                                <td>@item.ID </td>
+                                <td>@item.FullName </td>
+                                <td>@item.Department </td>
+                                <td>@item.StartWorkYear </td>
+                                <td>
+                                    <ul>
+                                        @foreach (var element in item.Shifts)
+                                        {
+                                            <li>Date:@(((DateTime)element.ShiftDate).ToString("dd/MM/yyyy")) Start: @element.StartTime End:@element.EndTime    </li>
+                                        }
+                                    </ul>
+                                </td>
+                                <td>@Html.ActionLink("Edit", "GetDataEditEmp", new { id = item.ID })</td>
+                                <td>@Html.ActionLink("Delete", "DelEmp", new { id = item.ID })</td>
+                                <td>@Html.ActionLink("Add Shift", "AddShiftToEmployee", new { id = item.ID })</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        
+        </div>
+        </div>
+</body>
+</html>
