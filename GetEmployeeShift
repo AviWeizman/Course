@@ -1,0 +1,46 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetEmpShift</title>
+</head>
+<body>
+    <div>
+        <div >
+            <ul >
+                <li>Hello  @Session["FullName"]</li>
+                <li>@Html.ActionLink("Home", "Home", "Login")</li>
+                <li >Number of Action: @Session["ActionCounter"] </li>
+                <li >@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+            </ul>
+        </div>
+
+        <div >
+            <div >
+                <div>
+                    <h2>Add Shift</h2>
+                    @using (Html.BeginForm("AddShiftEmp", "employee", FormMethod.Post))
+                    {
+                        <div >
+                            <label >Employee ID</label>
+                            @Html.TextBoxFor(x => x.EmployeeID)
+                            @Html.HiddenFor(x => x.EmployeeID)
+                        </div>
+                        <div >
+                            <label c>Shift ID</label>
+                            @Html.TextBoxFor(x => x.ShiftID)
+                        </div>
+                        <input type="submit"  value="Add Shift" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
