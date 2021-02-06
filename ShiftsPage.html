@@ -1,0 +1,49 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShiftsPage</title>
+</head>
+<body>
+    
+        <div >
+            <ul >
+                <li>Hello  @Session["FullName"]</li>
+                <li>@Html.ActionLink("Home", "Home", "Login")</li>
+                <li class="LogOut">Number of Action: @Session["ActionCounter"] </li>
+                <li class="LogOut">@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+            </ul>
+        </div>
+
+
+        <div class="container text-center">
+            <h2>Shifts Menu</h2>
+            <table class="table table-striped table-dark table-bordered">
+                <thead>
+                    <tr><th>ID</th><th >Employee Name</th><th >Shift Date</th><th>Start Time</th><th >End Time</th></tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in ViewBag.shiftsData)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            @{string name = @item.FullName;}
+                            <td>@Html.ActionLink(name, "EditEmp", new { id1 = @item.ID })</td>
+                            <td>@item.ShiftDate</td>
+                            <td>@item.StartTime</td>
+                            <td>@item.EndTime</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @Html.ActionLink("Add Shift", "GetShiftFromUser")
+        </div>
+</body>
+</html>
