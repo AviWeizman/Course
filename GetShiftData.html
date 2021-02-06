@@ -1,0 +1,49 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetShiftData</title>
+</head>
+<body>
+    
+        <div >
+            <ul >
+                <li>Hello  @Session["FullName"]</li>
+                <li>@Html.ActionLink("Home", "Home", "Login")</li>
+                <li class="LogOut">Number of Action: @Session["ActionCounter"] </li>
+                <li class="LogOut">@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+            </ul>
+        </div>
+
+
+        
+            
+                <div>
+                    <h2>Add Shift</h2>
+                    @using (Html.BeginForm("AddShift", "Shift", FormMethod.Post))
+                    {
+                        <div >
+                            <label class="control-label">Shift Date</label>
+                            @Html.TextBoxFor(x => x.ShiftDate, new { @type = "date", placeholder = "Enter Shift Date" })
+                        </div>
+                        <div >
+                            <label >Start Time</label>
+                            @Html.TextBoxFor(x => x.StartTime, new {  placeholder = "Enter Start Time" })
+                        </div>
+                        <div >
+                            <label >End Time</label>
+                            @Html.TextBoxFor(x => x.EndTime, new {  placeholder = "Enter End Time" })
+                        </div>
+                        <input type="submit"  value="Update">
+                    }
+                </div>
+            
+        
+</body>
+</html>
